@@ -62,6 +62,32 @@ class GroupesController < ApplicationController
     end
   end
 
+  def Rand
+    @personnes = Personne.all
+    @groupes = Groupe.all
+
+    maxByGroup = (@personnes.size / @groupes.size).ceil + 1
+    @personnes.each do |personne|
+      personne.group_id = nil
+      personne.save
+    end
+
+    id_groupe = []
+    @groupes.each do |groupe|
+      id_groupe << groupe.id
+    end
+
+    @personnes.each do |i|
+      random_groupe = id_groupe.sample
+      i.group_id = random_groupe
+      i.save
+      if @personnes.where(group_id: random_groupe).size == maxByGroup
+        id_groupe.delete(random_groupe)
+      end
+    end
+    redirect_to root_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_groupe
@@ -74,25 +100,4 @@ class GroupesController < ApplicationController
     end
 
 
-    def Rand
-      maxByGroup = (@personnes.size / @groupes.size).ceil
-      @personnes.each do |personne|
-        personne.group_id = nil
-        personne.save
-      end
-
-      id_groupe = []
-      @groupes.each do |groupe|
-        id_groupe << groupe_id
-      end
-
-      @personnes.each do |i|
-        random_groupe = id_groupe.sample
-        i.groupe_id =  random_groupe
-        i.save
-        if @personnes.where(group_id: random_groupe).size == MaxByGroup
-          id_groupe.delete(random_groupe)
-        end
-      end
-    end
 end
