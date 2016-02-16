@@ -5,6 +5,7 @@ class GroupesController < ApplicationController
   # GET /groupes.json
   def index
     @groupes = Groupe.all
+    @personnes = Personne.all
   end
 
   # GET /groupes/1
@@ -28,11 +29,11 @@ class GroupesController < ApplicationController
 
     respond_to do |format|
       if @groupe.save
-        format.html { redirect_to @groupe, notice: 'Groupe was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Groupe was successfully created.' }
         format.json { render :show, status: :created, location: @groupe }
       else
         format.html { render :new }
-        format.json { render json: @groupe.errors, status: :unprocessable_entity }
+        format.json { render json: @groupes.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,7 +43,7 @@ class GroupesController < ApplicationController
   def update
     respond_to do |format|
       if @groupe.update(groupe_params)
-        format.html { redirect_to @groupe, notice: 'Groupe was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Groupe was successfully updated.' }
         format.json { render :show, status: :ok, location: @groupe }
       else
         format.html { render :edit }
@@ -70,5 +71,6 @@ class GroupesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def groupe_params
       params.require(:groupe).permit(:nom, :salle, :tache)
+      params.require(:personnes).permit(:nom, :email, :tel, :group_id, :sensei)
     end
 end
