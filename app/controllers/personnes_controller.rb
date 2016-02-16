@@ -9,57 +9,25 @@ class PersonnesController < ApplicationController
 
   # GET /personnes/1
   # GET /personnes/1.json
-  def show
-  end
+
 
   # GET /personnes/new
-  def new
-    @personne = Personne.new
-  end
+
 
   # GET /personnes/1/edit
-  def edit
-  end
+
 
   # POST /personnes
   # POST /personnes.json
-  def create
-    @personne = Personne.new(personne_params)
 
-    respond_to do |format|
-      if @personne.save
-        format.html { redirect_to @personne, notice: 'Personne was successfully created.' }
-        format.json { render :show, status: :created, location: @personne }
-      else
-        format.html { render :new }
-        format.json { render json: @personne.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # PATCH/PUT /personnes/1
   # PATCH/PUT /personnes/1.json
-  def update
-    respond_to do |format|
-      if @personne.update(personne_params)
-        format.html { redirect_to @personne, notice: 'Personne was successfully updated.' }
-        format.json { render :show, status: :ok, location: @personne }
-      else
-        format.html { render :edit }
-        format.json { render json: @personne.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+
 
   # DELETE /personnes/1
   # DELETE /personnes/1.json
-  def destroy
-    @personne.destroy
-    respond_to do |format|
-      format.html { redirect_to personnes_url, notice: 'Personne was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
