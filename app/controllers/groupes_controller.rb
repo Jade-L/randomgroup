@@ -72,4 +72,27 @@ class GroupesController < ApplicationController
     def groupe_params
       params.require(:groupe).permit(:nom, :salle, :tache)
     end
+
+
+    def Rand
+      maxByGroup = (@personnes.size / @groupes.size).ceil
+      @personnes.each do |personne|
+        personne.group_id = nil
+        personne.save
+      end
+
+      id_groupe = []
+      @groupes.each do |groupe|
+        id_groupe << groupe_id
+      end
+
+      @personnes.each do |i|
+        random_groupe = id_groupe.sample
+        i.groupe_id =  random_groupe
+        i.save
+        if @personnes.where(group_id: random_groupe).size == MaxByGroup
+          id_groupe.delete(random_groupe)
+        end
+      end
+    end
 end
