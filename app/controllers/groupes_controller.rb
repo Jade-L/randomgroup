@@ -33,7 +33,7 @@ class GroupesController < ApplicationController
         format.json { render :show, status: :created, location: @groupe }
       else
         format.html { render :new }
-        format.json { render json: @groupes.errors, status: :unprocessable_entity }
+        format.json { render json: @groupe.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -71,6 +71,5 @@ class GroupesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def groupe_params
       params.require(:groupe).permit(:nom, :salle, :tache)
-      params.require(:personnes).permit(:nom, :email, :tel, :group_id, :sensei)
     end
 end
