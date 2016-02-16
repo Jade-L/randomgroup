@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Groupes</h1>
+<h1>Organisation</h1>
 
 <table>
   <thead>
@@ -18,7 +18,6 @@
         <td><%= groupe.nom %></td>
         <td><%= groupe.salle %></td>
         <td><%= groupe.tache %></td>
-        <td><%= link_to 'Show', groupe %></td>
         <td><%= link_to 'Edit', edit_groupe_path(groupe) %></td>
         <td><%= link_to 'Destroy', groupe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
