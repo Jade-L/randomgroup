@@ -30,5 +30,5 @@ a = ["Guillaume",
 "Manoël"]
 
 23.times do |i|
-  us = Personne.create(nom: "#{a[i]}", email: "#{a[i]}@gmail.com", tel: 02340351320, sensei: false)
+  us = Personne.create(nom: "#{a[i]}", email: "#{a[i]}@gmail.com", tel: 0616161616, sensei: false)
 end
