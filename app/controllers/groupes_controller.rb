@@ -1,5 +1,6 @@
 class GroupesController < ApplicationController
   before_action :set_groupe, only: [:show, :edit, :update, :destroy]
+  before_action :Gmin, only: [:Rand]
 
   # GET /groupes
   # GET /groupes.json
@@ -99,5 +100,10 @@ class GroupesController < ApplicationController
       params.require(:groupe).permit(:nom, :salle, :tache)
     end
 
+  def Gmin
+    if Groupe.all.size < 2
+      redirect_to root_path, notice: "Un minimun de 2 groupes est nécessaire."
+    end
+  end
 
 end
