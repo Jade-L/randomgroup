@@ -1,5 +1,7 @@
 <div class="message"> <%= flash_messages %></div>
 
+<div class="container">
+
 <h1>Organisation</h1>
 
 <table class = "table">
@@ -20,6 +22,14 @@
         <td><%= groupe.tache %></td>
         <td><%= link_to 'Edit', edit_groupe_path(groupe) %></td>
         <td><%= link_to 'Destroy', groupe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <% @personnes.each do |gens| %>
+          <% if groupe.id == gens.group_id %>
+          <%= gens.nom %>
+          <% end %>
+          <% end %>
+          
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -29,6 +39,9 @@
 
 <button type="button" class="btn btn-default"><%= link_to 'New Groupe', new_groupe_path %></button>
 
+</div>
+
+<div class="container">
 
 <h1>Listing Personnes</h1>
 
@@ -60,3 +73,4 @@
 <br>
 <%= link_to 'Random', randomgroupe_path %>
 <!-- <button type="button" class="btn btn-default"></button> -->
+</div>
