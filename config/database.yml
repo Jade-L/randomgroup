@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: random_group_production
-  username: random_group
-  password: <%= ENV['RANDOM_GROUP_DATABASE_PASSWORD'] %>
+  username: deploy
+  password: <%= ENV['DEPLOY_DATABASE_PASSWORD'] %>
